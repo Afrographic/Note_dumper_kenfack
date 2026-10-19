@@ -1,0 +1,18 @@
+.primary-btn {
+    padding: 12px 16px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.25s;
+    user-select: none;
+    text-align: center;
+}
+
+.primary-btn:hover {
+    background-color: #006387;
+}
+
+.primary-btn:active {
+    transform: scale(1.05);
+}

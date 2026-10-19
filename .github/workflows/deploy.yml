@@ -1,0 +1,84 @@
+name: deploy-identity
+
+on:
+  push:
+    branches: ["brunel"]
+
+concurrency:
+  group: super-admin-deploy
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: |
+          docker build --platform linux/amd64 -t super-admin:latest .
+
+      - name: Export image as tar.gz
+        run: |
+          docker save super-admin:latest | gzip > super-admin.tar.gz
+
+      - name: Copy image and compose to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT }}
+          source: "super-admin.tar.gz,compose.yml"
+          target: "/tmp/"
+
+      - name: Deploy on server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          port: ${{ secrets.DEPLOY_PORT }}
+          command_timeout: 10m
+          script: |
+            set -euo pipefail
+
+            # ── 1. Stopper les anciens containers ───────────────────────────
+            echo ">>> Arrêt des anciens containers super-admin..."
+            docker stop ado_super_admin-super-admin-adosmart-1 2>/dev/null || true
+            docker stop ado_tuteur-super-admin-adosmart-1 2>/dev/null || true
+            docker stop ado_school-super-admin-adosmart-1 2>/dev/null || true
+
+            docker ps --filter "name=super-admin" --format "{{.Names}}" | \
+              grep -v "^super-admin-super-admin" | \
+              xargs -r docker stop || true
+
+            # ── 2. Mettre à jour le compose.yml sur le serveur ──────────────
+            echo ">>> Mise à jour du compose.yml..."
+            cp /tmp/compose.yml /opt/adosmart/super-admin/compose.yml
+            rm -f /tmp/compose.yml
+
+            # ── 3. Charger la nouvelle image ────────────────────────────────
+            echo ">>> Chargement de la nouvelle image..."
+            docker load -i /tmp/super-admin.tar.gz
+            rm -f /tmp/super-admin.tar.gz
+
+            # ── 4. Redémarrer le bon container ──────────────────────────────
+            echo ">>> Démarrage du nouveau container..."
+            cd /opt/adosmart/super-admin
+            docker compose down || true
+            docker compose up -d --force-recreate
+
+            # ── 5. Vérification finale ───────────────────────────────────────
+            echo ">>> Containers actifs :"
+            docker ps --filter "name=super-admin" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+
+            echo ">>> Labels Traefik du nouveau container :"
+            docker inspect super-admin-super-admin-adosmart-1 \
+              --format '{{range $k,$v := .Config.Labels}}{{$k}}={{$v}}{{"\n"}}{{end}}' \
+              | grep traefik || true

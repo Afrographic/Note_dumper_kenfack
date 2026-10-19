@@ -1,0 +1,19 @@
+.languages {
+    display: flex;
+    border: 1px solid #aaa;
+    align-items: center;
+    border-radius: 8px;
+    transition: 0.25s;
+    cursor: pointer;
+    background-color: #fff;
+    padding: 8px;
+    gap: 8px;
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 9000;
+}
+
+.languages:hover {
+    background-color: #e9e9e9;
+}

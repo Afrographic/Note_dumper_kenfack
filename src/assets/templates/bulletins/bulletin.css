@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+}
+
+.bold {
+    font-family: "arial black";
+}
+
+.bulletin {
+    aspect-ratio: 210/297;
+    width: 100%;
+    padding: 8vw;
+}
+
+.container {
+    border: 1px solid #000;
+    height: 100%;
+    padding: 2vw;
+    font-size: 1.3vw;
+}
+
+.container div {
+    text-align: center;
+}
+
+.entete {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 12vw;
+}
+
+table {
+    border: 1px solid #a0a0a0;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table td {
+    padding: 0.6vw;
+    padding-left: 1vw;
+}
+
+.titleAnneeScolaire {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 2.5vw;
+    gap: 1vw;
+}
+
+.titre {
+    padding: 0.8vw 2vw;
+    background-color: #444;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 2vw;
+}
+
+.eleveInfo {
+    margin-top: 1vw;
+}
+
+.mt05 {
+    margin-top: 0.5vw;
+}
+
+.grey {
+    background-color: #e4e4e4;
+}
+
+.spacer{
+    height: 1vw;
+}
+
+
+.vertical-text {
+  writing-mode: vertical-rl; /* Sets text direction to vertical, right to left flow */
+  text-orientation: upright; /* Keeps characters upright for horizontal scripts (optional) */
+}
+
+.stat-eval{
+    margin-top:8px;
+    display: flex;
+    gap:8px;
+}
+
+.tab td,.note-table td,.stat-eval td{
+    border:1px solid #aaa;
+    font-size: 0.8em;
+}
+
+.note-table td:nth-child(3){
+    text-align: center;
+}
+.note-table td:nth-child(4){
+    text-align: center;
+}
+.note-table td:nth-child(5){
+    text-align: center;
+}
+.note-table td:nth-child(6){
+    text-align: center;
+}
+.note-table td:nth-child(7){
+    text-align: center;
+}
+.note-table td:nth-child(8){
+    text-align: center;
+}
+.note-table td:nth-child(9){
+    text-align: center;
+}
+
+.tr{
+    text-align: right;
+}
+
+.bg-grey{
+    background-color: #e4e4e4;
+}
+
+.signification-appreciation{
+    text-align: left !important;
+    width: 100%;
+    padding-top:4px ;
+    border-top:1px solid #e4e4e4;
+    margin-top:8px;
+}
+
+.signature{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.signature div{
+    padding:16px;
+
+}

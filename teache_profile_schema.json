@@ -1,0 +1,201 @@
+{
+  "school": "Lycee bilingue de Zemmeh",
+  "matieres": [
+    {
+      "name": "Informatique",
+      "classe_id": 16,
+      "prof_id": 12,
+      "group_id": 2,
+      "coef": 2,
+      "competence": "Logique ",
+      "id": 6,
+      "classe": {
+        "name": "Terminale",
+        "prof_id": 5,
+        "id": 16
+      },
+      "evaluations": [
+        {
+          "name": "Sequence 6",
+          "id": 7,
+          "eleves": [
+            {
+              "name": "Sonfack Ranelle",
+              "sex": "F",
+              "classe_id": 16,
+              "dateDeNaissance": "2026-10-21",
+              "lieuDeNaissance": "rtertfgdfg",
+              "nomDuParent": "sdfsd",
+              "numeroDuParent": "dfsdf",
+              "matricule": "LY-22-419",
+              "id": 33,
+              "note": 0
+            },
+            {
+              "name": "Tiobou Rene",
+              "sex": "F",
+              "classe_id": 16,
+              "dateDeNaissance": "2026-10-17",
+              "lieuDeNaissance": "dfsdf",
+              "nomDuParent": "dfsdf",
+              "numeroDuParent": "dfsdf",
+              "matricule": "LY-23-96",
+              "id": 34,
+              "note": 0
+            }
+          ]
+        },
+        {
+          "name": "Sequence 5",
+          "id": 5,
+          "eleves": [
+            {
+              "name": "Sonfack Ranelle",
+              "sex": "F",
+              "classe_id": 16,
+              "dateDeNaissance": "2026-10-21",
+              "lieuDeNaissance": "rtertfgdfg",
+              "nomDuParent": "sdfsd",
+              "numeroDuParent": "dfsdf",
+              "matricule": "LY-22-419",
+              "id": 33,
+              "note": 0
+            },
+            {
+              "name": "Tiobou Rene",
+              "sex": "F",
+              "classe_id": 16,
+              "dateDeNaissance": "2026-10-17",
+              "lieuDeNaissance": "dfsdf",
+              "nomDuParent": "dfsdf",
+              "numeroDuParent": "dfsdf",
+              "matricule": "LY-23-96",
+              "id": 34,
+              "note": 0
+            }
+          ]
+        },
+        {
+          "name": "Sequence 4",
+          "id": 4,
+          "eleves": [
+            {
+              "name": "Sonfack Ranelle",
+              "sex": "F",
+              "classe_id": 16,
+              "dateDeNaissance": "2026-10-21",
+              "lieuDeNaissance": "rtertfgdfg",
+              "nomDuParent": "sdfsd",
+              "numeroDuParent": "dfsdf",
+              "matricule": "LY-22-419",
+              "id": 33,
+              "note": 0
+            },
+            {
+              "name": "Tiobou Rene",
+              "sex": "F",
+              "classe_id": 16,
+              "dateDeNaissance": "2026-10-17",
+              "lieuDeNaissance": "dfsdf",
+              "nomDuParent": "dfsdf",
+              "numeroDuParent": "dfsdf",
+              "matricule": "LY-23-96",
+              "id": 34,
+              "note": 0
+            }
+          ]
+        },
+        {
+          "name": "Sequence 3",
+          "id": 3,
+          "eleves": [
+            {
+              "name": "Sonfack Ranelle",
+              "sex": "F",
+              "classe_id": 16,
+              "dateDeNaissance": "2026-10-21",
+              "lieuDeNaissance": "rtertfgdfg",
+              "nomDuParent": "sdfsd",
+              "numeroDuParent": "dfsdf",
+              "matricule": "LY-22-419",
+              "id": 33,
+              "note": 0
+            },
+            {
+              "name": "Tiobou Rene",
+              "sex": "F",
+              "classe_id": 16,
+              "dateDeNaissance": "2026-10-17",
+              "lieuDeNaissance": "dfsdf",
+              "nomDuParent": "dfsdf",
+              "numeroDuParent": "dfsdf",
+              "matricule": "LY-23-96",
+              "id": 34,
+              "note": 0
+            }
+          ]
+        },
+        {
+          "name": "Sequence 2",
+          "id": 2,
+          "eleves": [
+            {
+              "name": "Sonfack Ranelle",
+              "sex": "F",
+              "classe_id": 16,
+              "dateDeNaissance": "2026-10-21",
+              "lieuDeNaissance": "rtertfgdfg",
+              "nomDuParent": "sdfsd",
+              "numeroDuParent": "dfsdf",
+              "matricule": "LY-22-419",
+              "id": 33,
+              "note": 0
+            },
+            {
+              "name": "Tiobou Rene",
+              "sex": "F",
+              "classe_id": 16,
+              "dateDeNaissance": "2026-10-17",
+              "lieuDeNaissance": "dfsdf",
+              "nomDuParent": "dfsdf",
+              "numeroDuParent": "dfsdf",
+              "matricule": "LY-23-96",
+              "id": 34,
+              "note": 0
+            }
+          ]
+        },
+        {
+          "name": "Sequence 1",
+          "id": 1,
+          "eleves": [
+            {
+              "name": "Sonfack Ranelle",
+              "sex": "F",
+              "classe_id": 16,
+              "dateDeNaissance": "2026-10-21",
+              "lieuDeNaissance": "rtertfgdfg",
+              "nomDuParent": "sdfsd",
+              "numeroDuParent": "dfsdf",
+              "matricule": "LY-22-419",
+              "id": 33,
+              "note": 0
+            },
+            {
+              "name": "Tiobou Rene",
+              "sex": "F",
+              "classe_id": 16,
+              "dateDeNaissance": "2026-10-17",
+              "lieuDeNaissance": "dfsdf",
+              "nomDuParent": "dfsdf",
+              "numeroDuParent": "dfsdf",
+              "matricule": "LY-23-96",
+              "id": 34,
+              "note": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

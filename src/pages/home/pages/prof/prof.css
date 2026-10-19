@@ -1,0 +1,13 @@
+.prof-item-container {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    height: 70vh;
+    overflow: auto;
+}
+
+.prof-item img{
+    width: 24px;
+}
