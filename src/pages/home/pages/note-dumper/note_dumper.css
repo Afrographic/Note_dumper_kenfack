@@ -1,0 +1,13 @@
+.search-box{
+    padding:8px;
+    border:1px solid #ececec;
+    border-radius: 8px;
+    margin-top: 8px;
+    display: flex;
+}
+
+.evaluation-item{
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}

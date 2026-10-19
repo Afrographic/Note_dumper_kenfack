@@ -1,0 +1,7 @@
+.cours-item{
+    padding:12px;
+    border:1px solid #e4e4e4;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}

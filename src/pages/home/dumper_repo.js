@@ -1,69 +1,80 @@
-export default class ClassesRepository {
+import { data } from "framer-motion/m";
+
+export default class DumperRepo {
   static con = new JsStore.Connection();
   static async init() {
     var table = {
-      name: "classes",
+      name: "note_dumper",
       columns: {
         id: {
           notNull: true,
           primaryKey: true,
           autoIncrement: true,
         },
-        name: {
+        data: {
           notNull: true,
-          dataType: "string",
-        },
-        prof_id: {
-          notNull: true,
-          dataType: "number",
+          dataType: "object",
         },
       },
     };
 
     await this.con.initDb({
-      name: "classes_db",
+      name: "note_dumper_db",
       tables: [table],
     });
   }
 
-  static async add(classe) {
+  static async add(data) {
     await this.init();
     await this.con.insert({
-      into: "classes",
-      values: [classe],
+      into: "note_dumper",
+      values: [data],
     });
   }
 
   static async getAll() {
     await this.init();
     return await this.con.select({
-      from: "classes",
+      from: "note_dumper",
       order: {
-        by: "name",
+        by: "id",
         type: "asc",
       },
     });
   }
+  static async getOne(id) {
+    await this.init();
+    return await this.con.select({
+      from: "note_dumper",
+      order: {
+        by: "id",
+        type: "asc",
+      },
+      where:{
+        id:id
+      }
+    });
+  }
+    
 
   static async delete(id) {
     await this.init();
     await this.con.remove({
-      from: "classes",
+      from: "note_dumper",
       where: {
         id: id,
       },
     });
   }
 
-  static async edit(classe) {
+  static async edit(data) {
     await this.con.update({
-      in: "classes",
+      in: "note_dumper",
       set: {
-        name: classe.name,
-        prof_id: classe.prof_id,
+        data: data.data,
       },
       where: {
-        id: classe.id,
+        id: data.id,
       },
     });
   }
