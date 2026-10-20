@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 
 import "./note_dumper.css";
 import FormItem from "../../../../components/form_item/form_item";
+import Utils from "../../../../globals/Utils";
 
 export default function NoteDumper() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,6 +15,7 @@ export default function NoteDumper() {
   const [evaluation_name, set_evaluation_name] = useState("Chargement...");
   const [eleves, setEleves] = useState([]);
   const [elevesBackup, setElevesBackup] = useState([]);
+  const [searchToken,setSearchToken] = useState("");
 
   const [cours, setCours] = useState({
     name: "Chargement...",
@@ -71,6 +73,17 @@ export default function NoteDumper() {
     await DumperService.edit(schools[0]);
   }
 
+  async function exportNotes() {
+    let schools = await DumperService.getOne(cours_id);
+    console.log(schools[0].data);
+    schools[0].data.matieres[course_index].evaluations =
+      schools[0].data.matieres[course_index].evaluations[evaluation_index];
+    Utils.downloadJSON(
+      schools[0].data,
+      `Notes_${evaluation_name}_${cours.name}_${cours.classe.name}_${schools[0].data.name}.json`,
+    );
+  }
+
   return (
     <div className="p16">
       <button onClick={() => history.back()}>Retour</button>
@@ -81,7 +94,7 @@ export default function NoteDumper() {
       <div className="row g16">
         <div className="c-main">{cours.classe.name}</div>
 
-        <button>Exporter les notes</button>
+        <button onClick={() => exportNotes()}>Exporter les notes</button>
       </div>
 
       <div className="search-box">
@@ -89,6 +102,19 @@ export default function NoteDumper() {
           type="text"
           placeholder="Rechercher un eleve..."
           className="f1"
+          value={searchToken}
+          onChange={(el) => {
+            let token = el.target.value;
+            setSearchToken(token);
+            if (token.length > 0) {
+              let newEleves = elevesBackup.filter((item) => {
+                return item.name.toLowerCase().includes(token.toLowerCase());
+              });
+              setEleves(newEleves);
+            } else {
+              setEleves(elevesBackup);
+            }
+          }}
         />
         <button>Fermer le rechercher</button>
       </div>
@@ -99,7 +125,6 @@ export default function NoteDumper() {
           <div key={item.id} className="evaluation-item">
             <div> {item.name}</div>
             <input
-              
               placeholder="Inserez la note ici..."
               value={item.note}
               onChange={(el) => {
