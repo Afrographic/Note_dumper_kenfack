@@ -15,7 +15,7 @@ export default function NoteDumper() {
   const [evaluation_name, set_evaluation_name] = useState("Chargement...");
   const [eleves, setEleves] = useState([]);
   const [elevesBackup, setElevesBackup] = useState([]);
-  const [searchToken,setSearchToken] = useState("");
+  const [searchToken, setSearchToken] = useState("");
 
   const [cours, setCours] = useState({
     name: "Chargement...",
@@ -75,9 +75,12 @@ export default function NoteDumper() {
 
   async function exportNotes() {
     let schools = await DumperService.getOne(cours_id);
-    console.log(schools[0].data);
-    schools[0].data.matieres[course_index].evaluations =
-      schools[0].data.matieres[course_index].evaluations[evaluation_index];
+    let tempMatieres = schools[0].data.matieres;
+    let matiere = tempMatieres[course_index];
+    let tempEvaluations = matiere.evaluations;
+    matiere.evaluations = tempEvaluations[evaluation_index];
+
+    schools[0].data.matieres = [matiere];
     Utils.downloadJSON(
       schools[0].data,
       `Notes_${evaluation_name}_${cours.name}_${cours.classe.name}_${schools[0].data.name}.json`,
