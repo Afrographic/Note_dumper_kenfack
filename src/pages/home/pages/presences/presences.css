@@ -1,0 +1,10 @@
+.presence-item{
+    padding: 8px;
+    border: 1px solid #aaa;
+    margin-bottom: 4px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

@@ -7,6 +7,7 @@ import  Lang  from "./components/language/lang";
 import SchoolPreview from "./pages/home/pages/school-preview/school_preview";
 import PreviewCours from "./pages/home/pages/preview-cours/preview_cours";
 import NoteDumper from "./pages/home/pages/note-dumper/note_dumper";
+import Presences from "./pages/home/pages/presences/presences";
 
 
 export const TotalStudentContext = createContext();
@@ -39,6 +40,7 @@ function App() {
           <Route path="/preview-school" element={<SchoolPreview />} />
           <Route path="/preview-cours" element={<PreviewCours />} />
           <Route path="/note-dumper" element={<NoteDumper />} />
+          <Route path="/presences" element={<Presences />} />
         </Routes>
       </BrowserRouter>
     </TotalStudentContext.Provider>

@@ -49,9 +49,6 @@ export default function NoteDumper() {
         schools[0].data.matieres[parseInt(searchParams.get("course_index"))]
           .evaluations[evaluation_index].name,
       );
-      console.log(
-        schools[0].data.matieres[parseInt(searchParams.get("course_index"))],
-      );
     } else {
       history.back();
       toast.error("Cette matiere n'existe pas!");

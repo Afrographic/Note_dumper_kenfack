@@ -5,6 +5,14 @@ export default class Utils {
     return year;
   }
 
+   static getCurrentDateInFrench() {
+    return new Intl.DateTimeFormat("fr-FR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }).format(new Date());
+  }
+
   static Ucase(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }

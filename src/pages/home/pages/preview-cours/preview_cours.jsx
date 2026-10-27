@@ -28,9 +28,7 @@ export default function PreviewCours() {
       setCours(
         schools[0].data.matieres[parseInt(searchParams.get("course_index"))],
       );
-      console.log(
-        schools[0].data.matieres[parseInt(searchParams.get("course_index"))],
-      );
+     
     } else {
       history.back();
       toast.error("Cette matiere n'existe pas!");

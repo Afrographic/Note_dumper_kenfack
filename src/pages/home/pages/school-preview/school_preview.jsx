@@ -23,11 +23,16 @@ export default function SchoolPreview() {
       history.back();
       toast.error("Cette ecole n'existe pas!");
     }
-    console.log(schools[0]);
+    
   }
 
   function loadMatiere(index){
     navigate(`/preview-cours?cours_id=${searchParams.get("id")}&course_index=${index}`)
+  }
+
+  function loadPresence(index){
+    console.log(school.data.matieres[index].evaluations[0].eleves);
+    navigate(`/presences?school_id=${searchParams.get("id")}&course_index=${index}`)
   }
 
   return (
@@ -37,9 +42,11 @@ export default function SchoolPreview() {
       <hr />
       {school.data.matieres.map((item,index) => {
         return (
-          <div key={item.id} className="cours-item" onClick={()=>loadMatiere(index)}>
+          <div key={item.id} className="cours-item" >
             <div>{item.name}</div>
             <div className="c-main">{item.classe.name}</div>
+            <button onClick={()=>loadPresence(index)}>Presences</button>
+            <button onClick={()=>loadMatiere(index)}>Notes</button>
           </div>
         );
       })}

@@ -30,7 +30,6 @@ export default function Home() {
   async function loadSchools() {
     let schools = await DumperService.getAll();
     setSchools(schools);
-    console.log(schools);
   }
 
   async function delete_item(school) {
