@@ -7,6 +7,7 @@ import "./presences.css";
 import FormItem from "../../../../components/form_item/form_item";
 import Utils from "../../../../globals/Utils";
 import ToggleButtonComponent from "../../../../components/ToggleButton/ToggleButton";
+import backImage from "./../../../../assets/images/back.svg";
 
 export default function Presences() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -59,12 +60,14 @@ export default function Presences() {
   }
 
   async function exportFicheAppel() {
-    let schools = await DumperService.getOne(parseInt(searchParams.get("school_id")));
+    let schools = await DumperService.getOne(
+      parseInt(searchParams.get("school_id")),
+    );
     let date = new Date();
     let year = date.getFullYear();
     let month = date.getMonth() + 1;
     let day = date.getDate();
-    for(let i = 0 ;i<=eleves.length-1;i++){
+    for (let i = 0; i <= eleves.length - 1; i++) {
       eleves[i].year = year;
       eleves[i].month = month;
       eleves[i].day = day;
@@ -78,18 +81,26 @@ export default function Presences() {
 
   return (
     <div className="p16">
-      <button onClick={() => history.back()}>Retour</button>
+      <img src={backImage} alt="" width={24} onClick={() => history.back()} />
+
       <h2>Appel au cours de {cours.name}</h2>
       <div className="row g16">
         <div className="c-main">{cours.classe.name}</div>
+      </div>
+      <center>
+        <div className="bold" style={{ marginTop: "16px" }}>
+          {Utils.getCurrentDateInFrench()}
+        </div>
+      </center>
 
+      <div style={{ height: "16px" }}></div>
+      <center>
         <button onClick={() => exportFicheAppel()}>
           Exporter la fiche d'appel
         </button>
-      </div>
-      <div style={{marginTop:'16px'}}>{Utils.getCurrentDateInFrench()}</div>
+      </center>
+      <div style={{ height: "16px" }}></div>
 
-      <hr />
       {eleves.map((item, index) => {
         return (
           <div key={item.id} className="presence-item">

@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 import "./note_dumper.css";
 import FormItem from "../../../../components/form_item/form_item";
 import Utils from "../../../../globals/Utils";
+import backImage from "./../../../../assets/images/back.svg";
+import searchImage from "./../../../../assets/images/search.svg";
 
 export default function NoteDumper() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -86,16 +88,16 @@ export default function NoteDumper() {
 
   return (
     <div className="p16">
-      <button onClick={() => history.back()}>Retour</button>
-      <h2>
-        Notes de {cours.name} -{" "}
-        <span className="c-main">{evaluation_name}</span>
-      </h2>
+      <img src={backImage} alt="" width={24} onClick={() => history.back()} />
+      <h2 style={{ marginBottom: "0px" }}>Notes de {cours.name}</h2>
+      <div>{evaluation_name}</div>
       <div className="row g16">
         <div className="c-main">{cours.classe.name}</div>
-
-        <button onClick={() => exportNotes()}>Exporter les notes</button>
       </div>
+
+      <center>
+        <button onClick={() => exportNotes()}>Exporter les notes</button>
+      </center>
 
       <div className="search-box">
         <input
@@ -116,10 +118,10 @@ export default function NoteDumper() {
             }
           }}
         />
-        <button>Fermer le rechercher</button>
+        <img src={searchImage} alt="" width={24} />
       </div>
 
-      <hr />
+      <div style={{ height: "16px" }}></div>
       {eleves.map((item, index) => {
         return (
           <div key={item.id} className="evaluation-item">

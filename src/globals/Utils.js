@@ -5,7 +5,7 @@ export default class Utils {
     return year;
   }
 
-   static getCurrentDateInFrench() {
+  static getCurrentDateInFrench() {
     return new Intl.DateTimeFormat("fr-FR", {
       day: "numeric",
       month: "long",
@@ -31,13 +31,19 @@ export default class Utils {
   static downloadJSON(data, filename = "data.json") {
     const json = JSON.stringify(data, null, 2);
 
+    if (window.AndroidShare?.shareJSON) {
+      window.AndroidShare.shareJSON(json, filename);
+      return;
+    }
+
+    // Browser fallback
     const blob = new Blob([json], {
       type: "application/json",
     });
 
     const url = URL.createObjectURL(blob);
-
     const link = document.createElement("a");
+
     link.href = url;
     link.download = filename;
 
@@ -45,7 +51,7 @@ export default class Utils {
     link.click();
     link.remove();
 
-    URL.revokeObjectURL(url);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
   static importJSON() {

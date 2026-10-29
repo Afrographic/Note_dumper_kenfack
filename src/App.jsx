@@ -1,14 +1,13 @@
 import { createContext, useState } from "react";
 import "./global.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/home";
 import { Toaster } from "react-hot-toast";
-import  Lang  from "./components/language/lang";
+import Lang from "./components/language/lang";
 import SchoolPreview from "./pages/home/pages/school-preview/school_preview";
 import PreviewCours from "./pages/home/pages/preview-cours/preview_cours";
 import NoteDumper from "./pages/home/pages/note-dumper/note_dumper";
 import Presences from "./pages/home/pages/presences/presences";
-
 
 export const TotalStudentContext = createContext();
 
@@ -33,8 +32,8 @@ function App() {
           },
         }}
       />
-      <Lang />
-      <BrowserRouter>
+      {/* <Lang /> */}
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/preview-school" element={<SchoolPreview />} />
@@ -42,7 +41,7 @@ function App() {
           <Route path="/note-dumper" element={<NoteDumper />} />
           <Route path="/presences" element={<Presences />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </TotalStudentContext.Provider>
   );
 }

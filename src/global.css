@@ -89,6 +89,7 @@ body {
     display: flex;
     justify-content: flex-end;
     margin-top: 16px;
+    gap:16px;
 }
 
 .logo-school-holder {
@@ -316,4 +317,21 @@ select {
     border: 1px solid #e4e4e4;
     border-radius: 8px;
     gap: 16px;
+}
+
+
+button {
+    padding: 8px 16px;
+    background-color: #fff;
+    border: 1px solid #999;
+    outline: none;
+    transition: 0.25s;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #000;
 }

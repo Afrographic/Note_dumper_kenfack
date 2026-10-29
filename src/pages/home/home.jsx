@@ -4,6 +4,7 @@ import "./home.css";
 import { useState, useEffect } from "react";
 import DumperService from "./dumper_service";
 import toast from "react-hot-toast";
+import LogoName from "../../components/logo_name/logo_name";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -46,27 +47,28 @@ export default function Home() {
   }
 
   return (
-    <div className="p16">
-      <h2>Note dumper</h2>
+    <div>
+      <LogoName />
 
-      <button onClick={() => importProfil()}>Importer un profil</button>
-      <hr />
-      <div>
+      <center style={{marginTop:'16px'}}>
+        <button onClick={() => importProfil()}>Importer un profil</button>
+      </center>
+
+      <div className="p16">
         <h2>{schools.length} Ecoles</h2>
         {schools.map((school) => {
           return (
             <div key={school.id} className="school-item">
               <div className="f1" onClick={() => loadSchoolView(school)}>
-                <div>
-                  {" "}
-                  {school.data.school} -{" "}
-                  <span className="c-main">
-                    {school.data.matieres.length} Cours
-                  </span>{" "}
+                <div> {school.data.school} </div>
+                <div className="c-main bold">
+                  {school.data.matieres.length} Cours
                 </div>
-                <div className="c-main small">M. {school.data.name}</div>
+                <div className="c-main small">{school.data.name}</div>
               </div>
-              <button onClick={() => delete_item(school)}>Supprimer</button>
+              <div className="button-wrapper" style={{ marginTop: "32px" }}>
+                <button onClick={() => delete_item(school)}>Supprimer</button>
+              </div>
             </div>
           );
         })}
