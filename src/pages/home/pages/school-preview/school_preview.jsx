@@ -41,7 +41,7 @@ export default function SchoolPreview() {
 
   return (
     <div className="p16">
-      <img src={backImage} alt="" width={24} onClick={() => history.back()} />
+      <img src="./images/back.svg" alt="" width={24} onClick={() => history.back()} />
       <h3>{school.data.school}</h3>
       {school.data.matieres.map((item, index) => {
         return (

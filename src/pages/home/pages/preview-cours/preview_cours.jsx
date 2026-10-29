@@ -43,7 +43,7 @@ export default function PreviewCours() {
 
   return (
     <div className="p16">
-      <img src={backImage} alt="" width={24} onClick={() => history.back()} />
+      <img src="./images/back.svg" alt="" width={24} onClick={() => history.back()} />
 
       <h2 style={{margin:'0px',marginTop:'16px'}}>{cours.name}</h2>
       <div className="c-main" style={{marginBottom:'16px'}}>{cours.classe.name}</div>
